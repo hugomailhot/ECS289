@@ -20,7 +20,6 @@ while (count < n-1) do
 Credits for UnionFind in unionfind.py
 """
 
-import networkx as nx
 import numpy as np
 import argparse
 import sys

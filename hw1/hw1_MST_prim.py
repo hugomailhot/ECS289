@@ -16,7 +16,6 @@ while (there are fringe vertices)
 --------------------------------------------
 """
 
-import networkx as nx
 import numpy as np
 import argparse
 import sys
