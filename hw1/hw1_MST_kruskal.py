@@ -46,7 +46,7 @@ def minimum_spanning_tree_kruskal(m):
         mst (list): List of edges in the MST
     """
 
-    # Maintain a dictionary with component for each node
+    # Maintain a UnionFind with component for each node
     # Each node starts in a component of its own, 
     # added when component is first queried for it.
     component = UnionFind()
@@ -72,4 +72,6 @@ if __name__ == '__main__':
     # Load adjacency matrix
     m = np.load(args.matrix)
     mst = minimum_spanning_tree_kruskal(m)
+    cost = sum([m[x][y] for x, y in mst])
     print('MST edges for matrix m: {}'.format([(x+1, y+1) for x,y in list(mst)]))
+    print('cost: {}'.format(cost))

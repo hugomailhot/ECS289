@@ -32,11 +32,11 @@ def check_args(args=None):
     return results
 
 
-def neighbors(node, m):
+def neighbors(m, n):
     """
-    Returns a list of neighbors of node in m.
+    Returns a list of neighbors of node n in adjacency matrix m.
     """
-    return [x for x in range(len(m)) if m[node][x] != 0]
+    return [x for x in range(len(m)) if m[n][x] != 0]
 
 
 def minimum_spanning_tree_prim(m):
@@ -63,7 +63,7 @@ def minimum_spanning_tree_prim(m):
 
         if parent[curr] is not None:
             mst.append((curr, parent[curr]))
-        for nb in neighbors(curr, m):
+        for nb in neighbors(m, curr):
             if nb in unseen and m[curr][nb] < cost[nb]:
                 parent[nb] = curr
                 cost[nb] = m[curr][nb]
@@ -77,4 +77,6 @@ if __name__ == '__main__':
     # Load adjacency matrix
     m = np.load(args.matrix)
     mst = minimum_spanning_tree_prim(m)
+    cost = sum([m[x][y] for x, y in mst])
     print('MST edges for matrix m: {}'.format([(x+1, y+1) for x,y in list(mst)]))
+    print('cost: {}'.format(cost))
